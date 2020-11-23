@@ -23,5 +23,6 @@
 	He clicks on the cell where he wishes to place O.
 	If the player is a computer he automatically chooses a cell using Minimax Algorithm.
 	Now, both O and X play alternatively until any one of the two wins.
-	Winning criteria: Whenever any of the two players has fully filled one row/ column/ diagonal with his symbol 	     (X/ O), he wins and the game ends.
+	Winning criteria: Whenever any of the two players has fully filled one row/ column/ diagonal with his symbol 	     
+	(X/ O), he wins and the game ends.
 	If neither of the two players wins, the game is said to have ended in a draw
