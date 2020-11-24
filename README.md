@@ -151,3 +151,4 @@ Let's walk through the algorithm's execution with the full move tree, and show w
 * Book: George T. Heineman; Gary Pollice; Stanley Selkow. Algorithms in a nutshell. O'Reilly, 2009.
 * Wikipédia: <https://en.wikipedia.org/wiki/Minimax>
 * Medium Article : <https://medium.com/free-code-camp/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37?source=search_post---------1>
+* GeeksforGeeks : <https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/?ref=leftbar-rightbar>
