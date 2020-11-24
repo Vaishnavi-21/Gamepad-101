@@ -76,7 +76,7 @@ If the states is equal zero, then the board hasn't new empty cells to play.Or if
 
 	}
 	
-<b> Now let's analyze the main part of the code - recursion tree.
+<b> Now let's analyze the main part of the code - recursion.
 	
 	for (Cell cell : states) {
             int score;
@@ -102,4 +102,30 @@ For each valid moves (empty cells/states):
 	  board[cell.x][cell.y] = 0;
 	  }
 	  return (turn == Turn.COMPUTER) ? maxValue : minValue;
+
+
+## Analyzing by building a Game Tree
+The key to the Minimax algorithm is a back and forth between the two players, where the player whose "turn it is" desires to pick the move with the maximum score. In turn, the scores for each of the available moves are determined by the opposing player deciding which of its available moves has the minimum score. And the scores for the opposing players moves are again determined by the turn-taking player trying to maximize its score and so on all the way down the move tree to an end state.
+
+A description for the algorithm, assuming X is the "turn taking player," would look something like:
+
+If the game is over, return the score from X's perspective.
+Otherwise get a list of new game states for every possible move
+Create a scores list
+For each of these states add the minimax result of that state to the scores list
+If it's X's turn, return the maximum score from the scores list
+If it's O's turn, return the minimum score from the scores list
+You'll notice that this algorithm is recursive, it flips back and forth between the players until a final score is found.
+
+Let's walk through the algorithm's execution with the full move tree, and show why, algorithmically, the instant winning move will be picked
+
+<p> <img src='Game-treefinal.png'></img>
+
+* It's X's turn in state 1. X generates the states 2, 3, and 4 and calls minimax on those states.
+* State 2 pushes the score of +10 to state 1's score list, because the game is in an end state.
+* State 3 and 4 are not in end states, so 3 generates states 5 and 6 and calls minimax on them, while state 4 generates states 7 and 8 and calls minimax on them.
+* State 5 pushes a score of -10 onto state 3's score list, while the same happens for state 7 which pushes a score of -10 onto state 4's score list.
+* State 6 and 8 generate the only available moves, which are end states, and so both of them add the score of +10 to the move lists of states 3 and 4.
+* Because it is O's turn in both state 3 and 4, O will seek to find the minimum score, and given the choice between -10 and +10, both states 3 and 4 will yield -10.
+* Finally the score list for states 2, 3, and 4 are populated with +10, -10 and -10 respectively, and state 1 seeking to maximize the score will chose the winning move with score +10, state 2.
 
