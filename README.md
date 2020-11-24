@@ -26,9 +26,20 @@ The game operates in two modes.of
 	Winning criteria: Whenever any of the two players has fully filled one row/ column/ diagonal with his symbol 	     
 	(X/ O), he wins and the game ends.
 	If neither of the two players wins, the game is said to have ended in a draw
-	
-	
-<img src="Winninglogic"></img> 
+
+<b>The sample code of winninglogic for anyone of the player is stated below.</b>
+
+	public boolean hasOWon() {
+		if ((board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == 2) 
+		|| (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2]  == 2)) {
+		    	return true;
+		}
+		for (int i = 0; i < GRID_SIZE; i++) {
+		    if ((board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == 2) 
+		    || (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] == 		2)) {
+			return true;
+		    }
+        }
 
 ## MiniMax Algorithm
 
