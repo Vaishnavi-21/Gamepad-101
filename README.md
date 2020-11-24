@@ -27,6 +27,9 @@ The game operates in two modes.of
 	(X/ O), he wins and the game ends.
 	If neither of the two players wins, the game is said to have ended in a draw
 	
+	
+<img src="Winninglogic"></img> 
+
 ## MiniMax Algorithm
 
 <b>Minimax</b> is a decision-making algorithm, typically used in a turn-based, two player games. The goal of the algorithm is to find the optimal next move.
