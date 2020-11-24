@@ -28,18 +28,19 @@ The game operates in two modes.of
 	If neither of the two players wins, the game is said to have ended in a draw
 
 <b>The sample code of winninglogic for anyone of the player is stated below.</b>
-
-	public boolean hasOWon() {
-		if ((board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == 2) 
-		|| (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2]  == 2)) {
-		    	return true;
-		}
-		for (int i = 0; i < GRID_SIZE; i++) {
-		    if ((board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == 2) 
-		    || (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] == 		2)) {
-			return true;
-		    }
-        }
+```java
+public boolean hasOWon() {
+	if ((board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] == 2) 
+	|| (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2]  == 2)) {
+		return true;
+	}
+	for (int i = 0; i < GRID_SIZE; i++) {
+	    if ((board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == 2) 
+	    || (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] == 		2)) {
+		return true;
+	    }
+}
+```
 
 ## MiniMax Algorithm
 
@@ -69,42 +70,45 @@ The algorithm search, recursively, the best move that leads the Max player to wi
 The MAX may be X or O and the MIN may be O or X, whatever. The board is 3x3. Both players start with your worst score. 
 If player is MAX, its score is -infinity. Else if player is MIN, its score is +infinity.
 
-	if (depth == maxDepth || isGameOver()) return analyseGameState();
-        List<Cell> states = getEmptyCells();
-        if (states.isEmpty()) return 0;
+```java
+if (depth == maxDepth || isGameOver()) return analyseGameState();
+List<Cell> states = getEmptyCells();
+if (states.isEmpty()) return 0;
+```
 	
 If the states is equal zero, then the board hasn't new empty cells to play.Or if the maximum depth has reached . Or, if a player wins, then the game ended for MAX or MIN. So the score for that state will be returned.
 
-	public boolean isGameOver() {
-		return (hasXWon() || hasOWon() || getEmptyCells().isEmpty());
-	}
-	public Result getGameResult() {
-	
-		if (hasXWon()) {
-		    return Result.XWON;
-		} else if (hasOWon()) {
-		    return Result.OWON;
-		} else {
-		    return Result.DRAW;
-		}
+```java
+public boolean isGameOver() {
+	return (hasXWon() || hasOWon() || getEmptyCells().isEmpty());
+}
+public Result getGameResult() {
+if (hasXWon()) {
+    return Result.XWON;
+} else if (hasOWon()) {
+    return Result.OWON;
+} else {
+    return Result.DRAW;
+}
+}
+```
+<b> Now let's analyze the main part of the code - recursion.</b>
 
-	}
-	
-<b> Now let's analyze the main part of the code - recursion.
-	
-	for (Cell cell : states) {
-            int score;
-            if (turn == Turn.COMPUTER) {
-                setCell(cell, turn);
-                score = minimaxAlgorithm(Turn.PLAYER, depth + 1, alpha, beta);
-                maxValue = Math.max(maxValue, score);
-                if (depth == 0)
-                    possibleMoves.add(new Cell(cell.x, cell.y, score));
-            } else if (turn == Turn.PLAYER) {
-                setCell(cell, turn);
-                score = minimaxAlgorithm(Turn.COMPUTER, depth + 1, alpha, beta);
-                minValue = Math.min(minValue, score);
-          }
+```java	
+for (Cell cell : states) {
+    int score;
+    if (turn == Turn.COMPUTER) {
+	setCell(cell, turn);
+	score = minimaxAlgorithm(Turn.PLAYER, depth + 1, alpha, beta);
+	maxValue = Math.max(maxValue, score);
+	if (depth == 0)
+	    possibleMoves.add(new Cell(cell.x, cell.y, score));
+    } else if (turn == Turn.PLAYER) {
+	setCell(cell, turn);
+	score = minimaxAlgorithm(Turn.COMPUTER, depth + 1, alpha, beta);
+	minValue = Math.min(minValue, score);
+  }
+  ```
 	  
 For each valid moves (empty cells/states):
 * Set the cell as 2 or 1 according to turn.
@@ -113,10 +117,11 @@ For each valid moves (empty cells/states):
 * If the depth is zero while it's computer's turn add the cell to possible moves along with its score.
 * The cell state is resetted returning score max or min value the node can get..
 
-	  board[cell.x][cell.y] = 0;
-	  }
-	  return (turn == Turn.COMPUTER) ? maxValue : minValue;
-
+```java
+  board[cell.x][cell.y] = 0;
+  }
+  return (turn == Turn.COMPUTER) ? maxValue : minValue;
+```
 
 ## Analyzing by building a Game Tree
 The key to the Minimax algorithm is a back and forth between the two players, where the player whose "turn it is" desires to pick the move with the maximum score. In turn, the scores for each of the available moves are determined by the opposing player deciding which of its available moves has the minimum score. And the scores for the opposing players moves are again determined by the turn-taking player trying to maximize its score and so on all the way down the move tree to an end state.
