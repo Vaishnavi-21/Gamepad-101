@@ -36,10 +36,9 @@ It is based on the zero-sum game concept. In a zero-sum game, the total utility 
 
 ## Understanding the Algorithm:
 The algorithm search, recursively, the best move that leads the Max player to win or not lose (draw). It consider the current state of the game and the available moves at that state, then for each valid move it plays (alternating min and max) until it finds a terminal state (win, draw or lose).Here is the code of minimax algorithm that is used in this game .
-
-	<p>
-	<img src='minimax.PNG'></img>
-	</p>
+<p>
+<img src='minimax.PNG' ></img>
+</p>
 
 <b> Now let's break down the code to understand it further.</b>
 
