@@ -16,10 +16,10 @@ The game operates in two modes.of
 	Mode 2 : Human vs Computer where the opponent is Computer(Minimax AI Algorithm).
 	
 <p align='center'>
-	<img src="result.PNG" ></img>
+	<img src="result.PNG" width='500px'></img>
 </p>
 <p align='center'>
-	<img src="gamescreen.PNG"></img>
+	<img src="gamescreen.PNG" height='280px'></img>
 </p>
 
 		
