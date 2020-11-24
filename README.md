@@ -14,6 +14,8 @@ an X or O. In the code implemented the cells in the board array are intergers 2 
 The game operates in two modes.of 
 	Mode 1 : Human vs Human where both the players are human.
 	Mode 2 : Human vs Computer where the opponent is Computer(Minimax AI Algorithm).
+
+<p> <img src="gamescreen.png'></img> <img src="gameresult"></img></p>
 		
 ## How to Play the Game :
 	Choose the mode of the game in the GameWindow.
