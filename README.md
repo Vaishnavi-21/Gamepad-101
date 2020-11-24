@@ -135,7 +135,6 @@ For each of these states add the minimax result of that state to the scores list
 If it's X's turn, return the maximum score from the scores list
 If it's O's turn, return the minimum score from the scores list
 You'll notice that this algorithm is recursive, it flips back and forth between the players until a final score is found.
-
 Let's walk through the algorithm's execution with the full move tree, and show why, algorithmically, the instant winning move will be picked
 
 <p> <img src='Game-treefinal.png'></img>
@@ -148,3 +147,7 @@ Let's walk through the algorithm's execution with the full move tree, and show w
 * Because it is O's turn in both state 3 and 4, O will seek to find the minimum score, and given the choice between -10 and +10, both states 3 and 4 will yield -10.
 * Finally the score list for states 2, 3, and 4 are populated with +10, -10 and -10 respectively, and state 1 seeking to maximize the score will chose the winning move with score +10, state 2.
 
+### Resources:
+* Book: George T. Heineman; Gary Pollice; Stanley Selkow. Algorithms in a nutshell. O'Reilly, 2009.
+* Wikipédia: <https://en.wikipedia.org/wiki/Minimax>
+* Medium Article : <https://medium.com/free-code-camp/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37?source=search_post---------1>
