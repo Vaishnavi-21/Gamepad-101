@@ -28,10 +28,15 @@
 	If neither of the two players wins, the game is said to have ended in a draw
 	
 ## MiniMax Algorithm
-	Minimax is a decision-making algorithm, typically used in a turn-based, two player games. The goal of the algorithm is to find the optimal next move.
 
+Minimax is a decision-making algorithm, typically used in a turn-based, two player games. The goal of the algorithm is to find the optimal next move.
 In the algorithm, one player is called the maximizer, and the other player is a minimizer. If we assign an evaluation score to the game board, one player tries to choose a game state with the maximum score, while the other chooses a state with the minimum score.
-
 In other words, the maximizer works to get the highest score, while the minimizer tries get the lowest score by trying to counter moves.
-
 It is based on the zero-sum game concept. In a zero-sum game, the total utility score is divided among the players. An increase in one player's score results into the decrease in another player's score. So, the total score is always zero. For one player to win, the other one has to lose.
+
+## Understanding the Algorithm:
+The algorithm search, recursively, the best move that leads the Max player to win or not lose (draw). It consider the current state of the game and the available moves at that state, then for each valid move it plays (alternating min and max) until it finds a terminal state (win, draw or lose).
+	<p>
+	<img src='minimax.PNG'></img>
+	</p>
+	
